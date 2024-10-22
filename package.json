@@ -1,0 +1,72 @@
+{
+  "name": "create-tgen",
+  "version": "0.1.0",
+  "description": "Tool to quickly set up new projects with templates.",
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Matías Castañeda <@matcastaneda>",
+    "url": "https://matcastaneda.dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/matcastaneda/create-tgen.git",
+    "directory": "create-tgen"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "next.js",
+    "template",
+    "generator"
+  ],
+  "type": "module",
+  "bin": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "dev": "tsup --watch",
+    "prebuild": "rm -rf dist",
+    "build": "tsup",
+    "postbuild": "size-limit --json > size.json",
+    "lint": "pnpm run --parallel --stream lint:format && pnpm run lint:typecheck",
+    "lint:typecheck": "tsc --noEmit",
+    "lint:check": "prettier --check \"**/*.ts\" --cache",
+    "lint:format": "prettier --write \"**/*.ts\" --cache",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "19.5.0",
+    "@commitlint/config-conventional": "19.5.0",
+    "@ianvs/prettier-plugin-sort-imports": "4.3.1",
+    "@microsoft/api-extractor": "7.47.11",
+    "@size-limit/preset-small-lib": "11.1.6",
+    "@types/node": "22.7.8",
+    "commander": "12.1.0",
+    "fast-glob": "3.3.2",
+    "husky": "9.1.6",
+    "picocolors": "1.1.1",
+    "prettier": "3.3.3",
+    "pretty-quick": "4.0.0",
+    "prompts": "2.4.2",
+    "size-limit": "11.1.6",
+    "tsup": "8.3.0",
+    "typescript": "5.4.2"
+  },
+  "packageManager": "pnpm@9.12.2",
+  "size-limit": [
+    {
+      "name": "CLI",
+      "path": "dist/index.js",
+      "limit": "5 KB"
+    }
+  ]
+}
