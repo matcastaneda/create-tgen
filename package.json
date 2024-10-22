@@ -37,11 +37,14 @@
     "prebuild": "rm -rf dist",
     "build": "tsup",
     "postbuild": "size-limit --json > size.json",
+    "start": "node dist/index.js",
     "lint": "pnpm run --parallel --stream lint:format && pnpm run lint:typecheck",
     "lint:typecheck": "tsc --noEmit",
     "lint:check": "prettier --check \"**/*.ts\" --cache",
     "lint:format": "prettier --write \"**/*.ts\" --cache",
-    "prepare": "husky"
+    "prepare": "husky",
+    "release": "changeset version",
+    "pub:release": "pnpm build && pnpm publish --access public"
   },
   "devDependencies": {
     "@commitlint/cli": "19.5.0",
