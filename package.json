@@ -1,7 +1,7 @@
 {
   "name": "create-tgen",
   "version": "0.1.0",
-  "description": "Tool to quickly set up new projects with templates.",
+  "description": "A tool to quickly set up new projects with templates.",
   "publishConfig": {
     "access": "public"
   },
