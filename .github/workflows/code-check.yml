@@ -8,6 +8,8 @@ on:
   pull_request:
     types: [opened, reopened, synchronize]
 
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
 env:
   PNPM_VERSION: 9.12.2
 
