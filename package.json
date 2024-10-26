@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "description": "A tool to quickly set up new projects with templates.",
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true,
+    "registry": "https://registry.npmjs.org/"
   },
   "license": "MIT",
   "author": {
@@ -21,6 +23,7 @@
   "keywords": [
     "next.js",
     "react",
+    "vite",
     "template",
     "generator"
   ],
@@ -37,7 +40,6 @@
     "dev": "tsup --watch",
     "prebuild": "rm -rf dist",
     "build": "tsup",
-    "postbuild": "size-limit --json > size.json",
     "start": "node dist/index.js",
     "lint": "pnpm run --parallel --stream lint:format && pnpm run lint:typecheck",
     "lint:typecheck": "tsc --noEmit",
@@ -47,6 +49,17 @@
     "release": "changeset version",
     "pub:release": "pnpm build && pnpm publish --access public"
   },
+  "dependencies": {
+    "commander": "12.1.0",
+    "execa": "9.4.1",
+    "fast-glob": "3.3.2",
+    "ora": "8.1.0",
+    "picocolors": "1.1.1",
+    "prompts": "2.4.2",
+    "type-fest": "4.26.1",
+    "validate-npm-package-name": "6.0.0",
+    "zod": "3.23.8"
+  },
   "devDependencies": {
     "@changesets/changelog-github": "0.5.0",
     "@changesets/cli": "2.27.9",
@@ -54,25 +67,15 @@
     "@commitlint/config-conventional": "19.5.0",
     "@ianvs/prettier-plugin-sort-imports": "4.3.1",
     "@microsoft/api-extractor": "7.47.11",
-    "@size-limit/preset-small-lib": "11.1.6",
     "@types/node": "22.7.8",
-    "commander": "12.1.0",
-    "fast-glob": "3.3.2",
+    "@types/prompts": "2.4.9",
+    "@types/validate-npm-package-name": "4.0.2",
     "husky": "9.1.6",
-    "picocolors": "1.1.1",
     "prettier": "3.3.3",
     "pretty-quick": "4.0.0",
-    "prompts": "2.4.2",
-    "size-limit": "11.1.6",
     "tsup": "8.3.0",
-    "typescript": "5.4.2"
+    "typescript": "5.4.2",
+    "validate-npm-package-name": "6.0.0"
   },
-  "packageManager": "pnpm@9.12.2",
-  "size-limit": [
-    {
-      "name": "CLI",
-      "path": "dist/index.js",
-      "limit": "5 KB"
-    }
-  ]
+  "packageManager": "pnpm@9.12.2"
 }
