@@ -14,8 +14,8 @@ async function main() {
   const packageInfo = await getPackageInfo();
 
   const program = new Command()
-    .name('create-tgen')
-    .description('A CLI tool to generate TypeScript/JavaScript projects')
+    .name(packageInfo?.name || 'create-tgen')
+    .description(packageInfo?.description || '')
     .version(
       packageInfo?.version || '0.1.0',
       '-v, --version',
