@@ -1,18 +1,19 @@
-import { cp } from 'node:fs/promises';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { cp } from 'fs/promises';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import { defineConfig } from 'tsup';
 
 export default defineConfig({
   format: ['esm'],
-  dts: true,
-  minify: true,
   target: 'esnext',
   outDir: 'dist',
   entryPoints: ['src/index.ts'],
+  minify: true,
   splitting: true,
   treeshake: true,
-  tsconfig: 'tsconfig.build.json',
+  dts: true,
+  clean: true,
+  sourcemap: true,
   async onSuccess() {
     await cp(
       path.join(path.dirname(fileURLToPath(import.meta.url)), 'src/templates'),

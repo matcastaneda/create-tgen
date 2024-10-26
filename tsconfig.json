@@ -4,15 +4,14 @@
     // Type checking
     "strict": true,
     "noUncheckedIndexedAccess": true,
+    "composite": false,
 
     // Modules
+    "moduleResolution": "Node",
     "module": "ESNext",
-    "moduleResolution": "Bundler",
-    "resolveJsonModule": true,
-
-    // Language & Environment
     "target": "ESNext",
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "lib": ["ESNext", "DOM"],
+    "resolveJsonModule": true,
 
     // Emit
     "noEmit": true,
@@ -21,6 +20,7 @@
     "verbatimModuleSyntax": true,
     "moduleDetection": "force",
     "downlevelIteration": true,
+    "inlineSources": false,
 
     // Interop
     "allowJs": true,
@@ -33,6 +33,9 @@
     "skipDefaultLibCheck": true,
     "incremental": true,
     "tsBuildInfoFile": ".tsbuildinfo",
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "preserveWatchOutput": true,
 
     // Paths
     "baseUrl": ".",
