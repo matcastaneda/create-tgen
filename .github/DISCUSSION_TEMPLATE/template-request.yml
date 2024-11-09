@@ -1,5 +1,5 @@
-title: '[template]: '
-labels: ['Template Request']
+title: "[templates]: "
+labels: ["Template Request"]
 body:
   - type: markdown
     attributes:
