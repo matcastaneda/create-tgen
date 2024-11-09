@@ -1,0 +1,34 @@
+title: '[template]: '
+labels: ['Template Request']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### Thank you for suggesting a new template for create-tgen! Before submitting, please ensure that a similar template hasn't already been requested or created.
+
+  - type: input
+    id: template-name
+    attributes:
+      label: Template Name
+      description: Provide a concise name for the proposed template.
+      placeholder: 'e.g., Next.js with TypeScript and Tailwind CSS'
+    validations:
+      required: true
+
+  - type: textarea
+    id: template-description
+    attributes:
+      label: Template Description
+      description: Describe the purpose and features of the template. What problem does it solve? What technologies or configurations does it include?
+      placeholder: 'A Next.js starter template configured with TypeScript, Tailwind CSS, and ESLint for rapid development.'
+    validations:
+      required: true
+
+  - type: input
+    id: template-repository
+    attributes:
+      label: Template Repository (if applicable)
+      description: If there's an existing repository that serves as a reference or starting point for this template, please provide the URL.
+      placeholder: 'e.g., https://github.com/user/repo'
+    validations:
+      required: false
