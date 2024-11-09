@@ -3,7 +3,7 @@ name: Create Release Pull Request
 on:
   push:
     branches:
-      - master
+      - main
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
