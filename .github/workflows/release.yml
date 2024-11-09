@@ -22,7 +22,7 @@ jobs:
           fetch-depth: 0
 
       - name: Setup & Install Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version-file: .node-version
 
@@ -58,7 +58,7 @@ jobs:
         with:
           commit: 'chore(release): version packages'
           title: 'chore(release): version packages'
-          version: node ./github/changeset-version.js
+          version: node .github/changeset-version.js
           publish: npx changeset publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
