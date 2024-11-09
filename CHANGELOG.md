@@ -1,5 +1,11 @@
 # create-tgen
 
+## 0.2.2
+
+### Patch Changes
+
+- [`6dfc64a`](https://github.com/matcastaneda/create-tgen/commit/6dfc64a1a98f773f09af4a9c425959a2cf62275e) Thanks [@matcastaneda](https://github.com/matcastaneda)! - ci: update release workflow permissions to allow write access for id-token, contents, and pull-requests
+
 ## 0.2.1
 
 ### Patch Changes
