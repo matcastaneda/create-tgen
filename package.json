@@ -53,7 +53,7 @@
     "lint:check": "prettier --check \"**/*.ts\" --cache",
     "lint:format": "prettier --write \"**/*.ts\" --cache",
     "prepare": "husky install",
-    "release": "changeset",
+    "changeset": "changeset",
     "pub:release": "pnpm run build && pnpm publish --access public"
   },
   "dependencies": {
