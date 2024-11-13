@@ -2,7 +2,7 @@ import { access, constants } from 'fs/promises';
 import path from 'path';
 
 import { colorText } from '@/utils/color-text';
-import { getTemplateConfig } from '@/utils/get-template-config';
+import { getTemplatePath } from '@/utils/get-template-config';
 import { logger } from '@/utils/logger';
 import type { ProjectConfig } from '@/utils/schemas';
 import { spinner } from '@/utils/spinner';
@@ -10,7 +10,7 @@ import { spinner } from '@/utils/spinner';
 export async function checkDestinations(cwd: string, config: ProjectConfig) {
   const check = spinner(`${colorText(' Checking destinations...', 'gray')}`);
 
-  const templatePath = getTemplateConfig(config.template);
+  const templatePath = getTemplatePath(config.template);
   const destination = path.join(cwd, config.name);
 
   try {

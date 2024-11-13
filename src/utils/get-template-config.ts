@@ -1,45 +1,65 @@
 import fs from 'fs';
-import path, { dirname } from 'path';
-import { fileURLToPath } from 'url';
+import path from 'path';
 
-import { colorText } from '@/utils/color-text';
-import { handleError } from '@/utils/handle-error';
+import { TEMPLATE_CONFIG_FILE } from '@/utils/constants';
+import { templatesDir } from '@/utils/paths';
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-
-/**
- * Get the names of the available templates.
- * @returns An array of template names.
- */
-export function getTemplateNames() {
-  const templateDir = path.resolve(__dirname, '../dist/templates');
-
-  try {
-    const templates = fs.readdirSync(templateDir);
-
-    return templates.length
-      ? templates
-      : [
-          colorText(
-            'Templates are currently under construction. Please check back soon!',
-            'yellow'
-          ),
-        ];
-  } catch (error) {
-    handleError(error);
-  }
+interface Template {
+  name: string;
+  key: string;
+  available: boolean;
 }
 
 /**
- * Get the configuration for a specific template.
- * @param templateName The name of the template to get the configuration for.
+ * Retrieves the available templates by reading the template configuration files
+ * from the specified templates directory.
+ *
+ * @returns {Template[]} An array of Template objects representing the available templates.
  */
-export function getTemplateConfig(templateName: string) {
-  const templateDir = path.resolve(
-    __dirname,
-    '../dist/templates',
-    templateName
-  );
+function getAvailableTemplates(): Template[] {
+  return fs
+    .readdirSync(templatesDir)
+    .reduce<Template[]>((templates, templateFolder) => {
+      const configPath = path.join(
+        templatesDir,
+        templateFolder,
+        TEMPLATE_CONFIG_FILE
+      );
 
-  return templateDir;
+      if (fs.existsSync(configPath)) {
+        const configData = JSON.parse(
+          fs.readFileSync(configPath, 'utf-8')
+        ) as Template;
+
+        templates.push(configData);
+      }
+
+      return templates;
+    }, []);
+}
+
+/**
+ * Retrieves and displays the available templates.
+ *
+ * This function fetches the available templates using the `getAvailableTemplates` function
+ * and maps over the result to return an array of template objects containing the `name`,
+ * `key`, and `available` properties.
+ *
+ * @returns {Template[]} An array of template objects with `name`, `key`, and `available` properties.
+ */
+export function displayTemplates(): Template[] {
+  return getAvailableTemplates().map(({ name, key, available }) => ({
+    name,
+    key,
+    available,
+  }));
+}
+
+/**
+ * Retrieves the template configuration for the specified template.
+ *
+ * @param {string} templateName The name of the template to retrieve the configuration for.
+ */
+export function getTemplatePath(templateName: string) {
+  return path.join(templatesDir, templateName);
 }
