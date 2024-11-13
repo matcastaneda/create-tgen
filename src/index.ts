@@ -2,8 +2,8 @@
 import { Command } from 'commander';
 
 import { init } from '@/commands/init';
-import { getPackageInfo } from '@/utils/get-project-info';
 import { logHelpMessage } from '@/utils/log-help-message';
+import { getPackageInfo } from '@/utils/project-info';
 
 const handleSigTerm = () => process.exit(0);
 

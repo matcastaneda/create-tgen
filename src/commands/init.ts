@@ -9,17 +9,17 @@ import { customizeTemplate } from '@/actions/customize-template';
 import { initGit } from '@/actions/init-git';
 import { installDependencies } from '@/actions/install-dependencies';
 import { getOnline } from '@/actions/is-online';
-import { availableTemplates } from '@/utils/available-templates';
 import { colorText } from '@/utils/color-text';
-import { getUserAgentInfo } from '@/utils/get-project-info';
 import { handleError } from '@/utils/handle-error';
 import { handlePromptInterrupt } from '@/utils/handle-propmt-interrupt';
 import { logger } from '@/utils/logger';
+import { getUserAgentInfo } from '@/utils/project-info';
 import {
   initOptionsSchema,
   projectConfigSchema,
   type ProjectConfig,
 } from '@/utils/schemas';
+import { displayTemplates } from '@/utils/template-config';
 import {
   checkForErrors,
   ensurePackageManager,
@@ -50,7 +50,7 @@ export const init = new Command()
         process.exit(1);
       }
 
-      const config = await promptForProjectCofig(cwd);
+      const config = await promptForProjectCofig();
       await runInit(cwd, config);
 
       logger.break();
@@ -111,7 +111,9 @@ export const init = new Command()
     }
   });
 
-export async function promptForProjectCofig(cwd: string) {
+export async function promptForProjectCofig() {
+  const availableTemplates = displayTemplates();
+
   const baseQuestions: prompts.PromptObject<string>[] = [
     {
       type: 'text',
@@ -132,9 +134,9 @@ export async function promptForProjectCofig(cwd: string) {
       name: 'template',
       message: `Which ${colorText('template', 'cyan')} do you want to use?`,
       choices: availableTemplates.map((template) => ({
-        title: template.title,
-        value: template.value,
-        disabled: template.disabled,
+        title: template.name,
+        value: template.key,
+        disabled: !template.available,
       })),
       warn: 'This template is not yet implemented.',
       onState: handlePromptInterrupt,
