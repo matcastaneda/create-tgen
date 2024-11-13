@@ -1,5 +1,11 @@
 # create-tgen
 
+## 0.3.0
+
+### Minor Changes
+
+- [#6](https://github.com/matcastaneda/create-tgen/pull/6) [`63c6aa7`](https://github.com/matcastaneda/create-tgen/commit/63c6aa7ecbc5d51d89298f06d5954dde1a2e4bdf) Thanks [@matcastaneda](https://github.com/matcastaneda)! - feat: add new templates (next.js - react-vite)
+
 ## 0.2.2
 
 ### Patch Changes
