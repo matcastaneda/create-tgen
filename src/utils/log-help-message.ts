@@ -1,4 +1,4 @@
-import { availableTemplates } from '@/utils/available-templates';
+import { displayTemplates } from '@/utils/available-templates';
 import { colorText } from '@/utils/color-text';
 
 /**
@@ -6,6 +6,8 @@ import { colorText } from '@/utils/color-text';
  * @returns The help message.
  */
 export function logHelpMessage() {
+  const availableTemplates = displayTemplates();
+
   return `
 Templates:
   ${
@@ -16,8 +18,8 @@ Templates:
         )
       : availableTemplates
           ?.map((template) => {
-            const templateText = `- ${template.title}`;
-            return template.disabled
+            const templateText = `- ${template.name}`;
+            return !template.available
               ? `${colorText(templateText, 'gray')} ${colorText('(soon)', 'yellow')}`
               : colorText(templateText, 'cyan');
           })
