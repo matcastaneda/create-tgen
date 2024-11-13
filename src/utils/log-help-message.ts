@@ -1,5 +1,5 @@
 import { colorText } from '@/utils/color-text';
-import { displayTemplates } from '@/utils/get-template-config';
+import { displayTemplates } from '@/utils/template-config';
 
 /**
  * Log the help message for the `init` command.

@@ -3,11 +3,11 @@ import path from 'path';
 
 import { colorText } from '@/utils/color-text';
 import { TEMPLATE_CONFIG_FILE } from '@/utils/constants';
-import { getTemplatePath } from '@/utils/get-template-config';
 import { handleError } from '@/utils/handle-error';
 import { logger } from '@/utils/logger';
 import type { ProjectConfig } from '@/utils/schemas';
 import { spinner } from '@/utils/spinner';
+import { getTemplatePath } from '@/utils/template-config';
 
 export async function cloneTemplate(cwd: string, config: ProjectConfig) {
   const cloneSpinner = spinner(
