@@ -52,7 +52,7 @@
     "lint:typecheck": "tsc --noEmit",
     "lint:check": "prettier --check \"**/*.ts\" --cache",
     "lint:format": "prettier --write \"**/*.ts\" --cache",
-    "prepare": "husky install",
+    "prepare": "husky",
     "changeset": "changeset",
     "pub:release": "pnpm run build && pnpm publish --access public"
   },
