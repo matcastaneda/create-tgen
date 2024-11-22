@@ -1,5 +1,11 @@
 # create-tgen
 
+## 0.3.1
+
+### Patch Changes
+
+- [`090d7a8`](https://github.com/matcastaneda/create-tgen/commit/090d7a880956ac2f1f9a1a828c204715145620e9) Thanks [@matcastaneda](https://github.com/matcastaneda)! - fix: update dependencies to latest versions
+
 ## 0.3.0
 
 ### Minor Changes
