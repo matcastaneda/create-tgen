@@ -8,7 +8,7 @@ on:
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 env:
-  PNPM_VERSION: 9.12.2
+  PNPM_VERSION: 9.14.2
 
 jobs:
   create-release:
